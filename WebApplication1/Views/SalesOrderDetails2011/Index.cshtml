@@ -9,26 +9,20 @@
 <p>
     <a asp-action="Create">Agregar venta</a>
 </p>
-<table class="table">
+<table style="font-size: 8px" class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.CarrierTrackingNumber)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OrderQty)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.ProductID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SpecialOfferID)
+                @Html.DisplayNameFor(model => model.OrderQty)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.UnitPrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UnitPriceDiscount)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.LineTotal)

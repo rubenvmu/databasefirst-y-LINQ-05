@@ -21,7 +21,11 @@ namespace WebApplication1.Controllers
         // GET: SalesOrderDetails2014
         public async Task<IActionResult> Index()
         {
-            var adventureWorks2016Context = _context.SalesOrderDetail.Include(s => s.SalesOrder);
+            var adventureWorks2016Context = _context.SalesOrderDetail
+                    .Include(s => s.SalesOrder)
+                    .Where(so => so.SalesOrder.OrderDate.Year == 2014)
+                ;
+
             return View(await adventureWorks2016Context.ToListAsync());
         }
 

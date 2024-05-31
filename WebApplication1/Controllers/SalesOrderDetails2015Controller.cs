@@ -9,27 +9,27 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
-    public class SalesOrderDetails2011Controller : Controller
+    public class SalesOrderDetails2015Controller : Controller
     {
         private readonly AdventureWorks2016Context _context;
 
-        public SalesOrderDetails2011Controller(AdventureWorks2016Context context)
+        public SalesOrderDetails2015Controller(AdventureWorks2016Context context)
         {
             _context = context;
         }
 
-        // GET: SalesOrderDetails2011
+        // GET: SalesOrderDetails2015
         public async Task<IActionResult> Index()
         {
             var adventureWorks2016Context = _context.SalesOrderDetail
-                .Include(s => s.SalesOrder)
-                .Where(so => so.SalesOrder.OrderDate.Year == 2011)
+                    .Include(s => s.SalesOrder)
+                    .Where(so => so.SalesOrder.OrderDate.Year == 2015)
                 ;
 
             return View(await adventureWorks2016Context.ToListAsync());
         }
 
-        // GET: SalesOrderDetails2011/Details/5
+        // GET: SalesOrderDetails2015/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -48,14 +48,14 @@ namespace WebApplication1.Controllers
             return View(salesOrderDetail);
         }
 
-        // GET: SalesOrderDetails2011/Create
+        // GET: SalesOrderDetails2015/Create
         public IActionResult Create()
         {
             ViewData["SalesOrderID"] = new SelectList(_context.SalesOrderHeader, "SalesOrderID", "SalesOrderID");
             return View();
         }
 
-        // POST: SalesOrderDetails2011/Create
+        // POST: SalesOrderDetails2015/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -72,7 +72,7 @@ namespace WebApplication1.Controllers
             return View(salesOrderDetail);
         }
 
-        // GET: SalesOrderDetails2011/Edit/5
+        // GET: SalesOrderDetails2015/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -89,7 +89,7 @@ namespace WebApplication1.Controllers
             return View(salesOrderDetail);
         }
 
-        // POST: SalesOrderDetails2011/Edit/5
+        // POST: SalesOrderDetails2015/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -125,7 +125,7 @@ namespace WebApplication1.Controllers
             return View(salesOrderDetail);
         }
 
-        // GET: SalesOrderDetails2011/Delete/5
+        // GET: SalesOrderDetails2015/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -144,7 +144,7 @@ namespace WebApplication1.Controllers
             return View(salesOrderDetail);
         }
 
-        // POST: SalesOrderDetails2011/Delete/5
+        // POST: SalesOrderDetails2015/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

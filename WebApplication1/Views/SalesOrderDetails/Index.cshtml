@@ -5,111 +5,50 @@
 
 }
 
-<div class="container-fluid">
-    <nav class="navbar navbar-expand-sm navbar-light">
-        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="SalesOrderDetails2011" asp-action="Index">Ventas 2011</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="SalesOrderDetails2012" asp-action="Index">Ventas 2012</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="SalesOrderDetails2013" asp-action="Index">Ventas 2013</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="SalesOrderDetails2014" asp-action="Index">Ventas 2014</a>
-                </li>
-            </ul>
+
+<h2>Historial de Ventas</h2>
+<p style="font-size: 14px">Histórico de ventas (2011-2016)</p>
+
+<div class="container-fluid text-center mb-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card" style="height: 160px; margin-bottom: 5px; background-color: #A1102A;">
+                <a asp-area="" asp-controller="SalesOrderDetails2011" asp-action="Index" class="btn btn-dark" style="position: absolute; bottom: 10px; left: 10%; transform: translateX(-10%);">Ventas 2011</a>
+            </div>
         </div>
-    </nav>
+        <div class="col-md-4 mx-auto">
+            <div class="card" style="height: 160px; margin-bottom: 5px; background-color: #DD33FF;">
+                <a asp-area="" asp-controller="SalesOrderDetails2012" asp-action="Index" class="btn btn-dark" style="position: absolute; bottom: 10px; left: 10%; transform: translateX(-10%);">Ventas 2012</a>
+            </div>
+        </div>
+        <div class="col-md-4 mx-auto">
+            <div class="card" style="height: 160px; margin-bottom: 5px; background-color: #334CFF;">
+                <a asp-area="" asp-controller="SalesOrderDetails2013" asp-action="Index" class="btn btn-dark" style="position: absolute; bottom: 10px; left: 10%; transform: translateX(-10%);">Ventas 2013</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card" style="height: 160px; margin-bottom: 5px; background-color: #33FFFC;">
+                <a asp-area="" asp-controller="SalesOrderDetails2014" asp-action="Index" class="btn btn-dark" style="position: absolute; bottom: 10px; left: 10%; transform: translateX(-10%);">Ventas 2014</a>
+            </div>
+        </div>
+        <div class="col-md-4 mx-auto">
+            <div class="card" style="height: 160px; margin-bottom: 5px; background-color: #96FF33;">
+                <a asp-area="" asp-controller="SalesOrderDetails2015" asp-action="Index" class="btn btn-dark" style="position: absolute; bottom: 10px; left: 10%; transform: translateX(-10%);">Ventas 2015</a>
+            </div>
+        </div>
+        <div class="col-md-4 mx-auto">
+            <div class="card" style="height: 160px; margin-bottom: 5px; background-color: #FF5733;">
+                <a asp-area="" asp-controller="SalesOrderDetails2016" asp-action="Index" class="btn btn-dark" style="position: absolute; bottom: 10px; left: 10%; transform: translateX(-10%);">Ventas 2016</a>
+            </div>
+        </div>
+        <div style="height: 20px"></div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8"><a asp-action="Create" class="btn btn-success">Añadir nueva venta</a> <a asp-action="Edit" class="btn btn-warning">Editar venta</a> <a asp-action="Delete" class="btn btn-danger">Eliminar venta</a></div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
 </div>
 
-<h1>Ventas totales</h1>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CarrierTrackingNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderQty)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SpecialOfferID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UnitPrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UnitPriceDiscount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LineTotal)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.rowguid)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModifiedDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SalesOrder)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CarrierTrackingNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderQty)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SpecialOfferID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UnitPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UnitPriceDiscount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LineTotal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.rowguid)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModifiedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SalesOrder.SalesOrderID)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
