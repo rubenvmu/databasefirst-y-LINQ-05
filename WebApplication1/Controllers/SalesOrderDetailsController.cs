@@ -21,7 +21,7 @@ namespace WebApplication1.Controllers
         // GET: SalesOrderDetails
         public async Task<IActionResult> Index()
         {
-            var adventureWorks2016Context = _context.SalesOrderDetail.Include(s => s.SalesOrder);
+            var adventureWorks2016Context = _context.SalesOrderDetail.Include(s => s.SalesOrder).Take(5000);
             return View(await adventureWorks2016Context.ToListAsync());
         }
 
@@ -159,5 +159,7 @@ namespace WebApplication1.Controllers
         {
             return _context.SalesOrderDetail.Any(e => e.SalesOrderID == id);
         }
+
+
     }
 }

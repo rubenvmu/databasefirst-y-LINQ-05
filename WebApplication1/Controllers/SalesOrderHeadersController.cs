@@ -18,9 +18,13 @@ namespace WebApplication1.Controllers
             _context = context;
         }
 
+
         // GET: SalesOrderHeaders
+
+
         public async Task<IActionResult> Index()
         {
+            var adventureWorks2016Context = _context.SalesOrderHeader.Include(s => s.SalesOrderID).Take(2000);
             return View(await _context.SalesOrderHeader.ToListAsync());
         }
 

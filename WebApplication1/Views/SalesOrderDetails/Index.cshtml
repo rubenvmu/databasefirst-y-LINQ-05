@@ -2,10 +2,36 @@
 
 @{
     ViewData["Title"] = "Index";
+
 }
 
-<h1>Index</h1>
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-sm navbar-light">
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="SalesOrderDetails2011" asp-action="Index">Ventas 2011</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="SalesOrderDetails2012" asp-action="Index">Ventas 2012</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="SalesOrderDetails2013" asp-action="Index">Ventas 2013</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="SalesOrderDetails2014" asp-action="Index">Ventas 2014</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
 
+<h1>Ventas totales</h1>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
