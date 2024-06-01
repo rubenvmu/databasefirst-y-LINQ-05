@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -9,23 +10,29 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
-    public class SalesOrderDetails2012_ConsultaPersonalizada2 : Controller
+    public class SalesOrderDetails2011_ConsultaPersonalizada1Controller : Controller
     {
         private readonly AdventureWorks2016Context _context;
 
-        public SalesOrderDetails2012_ConsultaPersonalizada2(AdventureWorks2016Context context)
+        public SalesOrderDetails2011_ConsultaPersonalizada1Controller(AdventureWorks2016Context context)
         {
             _context = context;
         }
 
-        // GET: SalesOrderDetails2012_ConsultaPersonalizada2
+        // GET: SalesOrderDetails2011_ConsultaPersonalizada1
         public async Task<IActionResult> Index()
         {
-            var adventureWorks2016Context = _context.SalesOrderDetail.Include(s => s.SalesOrder);
+            var adventureWorks2016Context = _context.Product2011_Consulta1
+                .Where(s => s.Product.Color == "RED")
+                .Select(s => new ProductViewModel
+                {
+                    ProductID = s.ProductID,
+                    Name = s.Product.Name,
+                    Color = s.Product.Color
+                });
+
             return View(await adventureWorks2016Context.ToListAsync());
         }
-
-        // GET: SalesOrderDetails2012_ConsultaPersonalizada2/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,14 +51,14 @@ namespace WebApplication1.Controllers
             return View(salesOrderDetail);
         }
 
-        // GET: SalesOrderDetails2012_ConsultaPersonalizada2/Create
+        // GET: SalesOrderDetails2011_ConsultaPersonalizada1/Create
         public IActionResult Create()
         {
             ViewData["SalesOrderID"] = new SelectList(_context.SalesOrderHeader, "SalesOrderID", "SalesOrderID");
             return View();
         }
 
-        // POST: SalesOrderDetails2012_ConsultaPersonalizada2/Create
+        // POST: SalesOrderDetails2011_ConsultaPersonalizada1/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -68,7 +75,7 @@ namespace WebApplication1.Controllers
             return View(salesOrderDetail);
         }
 
-        // GET: SalesOrderDetails2012_ConsultaPersonalizada2/Edit/5
+        // GET: SalesOrderDetails2011_ConsultaPersonalizada1/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -85,7 +92,7 @@ namespace WebApplication1.Controllers
             return View(salesOrderDetail);
         }
 
-        // POST: SalesOrderDetails2012_ConsultaPersonalizada2/Edit/5
+        // POST: SalesOrderDetails2011_ConsultaPersonalizada1/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -121,7 +128,7 @@ namespace WebApplication1.Controllers
             return View(salesOrderDetail);
         }
 
-        // GET: SalesOrderDetails2012_ConsultaPersonalizada2/Delete/5
+        // GET: SalesOrderDetails2011_ConsultaPersonalizada1/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -140,7 +147,7 @@ namespace WebApplication1.Controllers
             return View(salesOrderDetail);
         }
 
-        // POST: SalesOrderDetails2012_ConsultaPersonalizada2/Delete/5
+        // POST: SalesOrderDetails2011_ConsultaPersonalizada1/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
