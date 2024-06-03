@@ -12,7 +12,6 @@
 
         public int ProductID { get; set; }
 
-        public int ProductID { get; set; }
         public string Name { get; set; } = null!;
         public string ProductNumber { get; set; } = null!;
         public string? Color { get; set; }

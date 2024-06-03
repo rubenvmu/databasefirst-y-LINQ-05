@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using WebApplication1.Models;
 
 namespace WebApplication1.Models;
 
@@ -242,4 +243,6 @@ public partial class AdventureWorks2016Context : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+public DbSet<WebApplication1.Models.consulta1> consulta1 { get; set; } = default!;
 }

@@ -19,19 +19,23 @@ namespace WebApplication1.Controllers
             _context = context;
         }
 
-        // GET: SalesOrderDetails2011_ConsultaPersonalizada1
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> ConsultaPersonalizada1()
         {
-            var adventureWorks2016Context = _context.Product2011_Consulta1
-                .Where(s => s.Product.Color == "RED")
-                .Select(s => new ProductViewModel
-                {
-                    ProductID = s.ProductID,
-                    Name = s.Product.Name,
-                    Color = s.Product.Color
-                });
+            var adventureWorks2016Context = from p in _context.Product
+                join l in _context.SalesOrderDetail
+                    on p.ProductID equals l.ProductID
+                select new consulta1() { Cantidad = l.OrderQty, Color = p.Color, Name = p.Name };
 
             return View(await adventureWorks2016Context.ToListAsync());
+        }
+        public async Task<IActionResult> Index()
+        {
+            var query = from p in _context.Product
+                join l in _context.SalesOrderDetail
+                    on p.ProductID equals l.ProductID
+                select new consulta1() { Cantidad = l.OrderQty, Color = p.Color, Name = p.Name };
+
+            return View(null);
         }
         public async Task<IActionResult> Details(int? id)
         {
